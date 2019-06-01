@@ -2,6 +2,35 @@
 This project aims to record specified images, videos, or video streams. In further stages, it will be extended
 by multiple algorithms based on data mining and artificial intelligence.
 
+<!--- 
+## Network Traffic Capture )
+
+Usually, in order to capture video streams from a webpage, we need to monitor the network traffic.
+
+* [BrowserMob-proxy](https://bmp.lightbody.net/)
+
+> is based on technology developed in the Selenium open source project and a commercial load testing and monitoring 
+    service originally called BrowserMob. Through pip command `pip install browsermob-proxy`, we can import its 
+    module into python. However, BrowserMob-proxy requires a binary file called `browsermob-proxy.bat`, which only 
+    support Linux system.) 
+-->
+
+## Video Stream
+Currently, video stream could be in following formats: M3U8(TS) and MPD(M4S).
+
+
+### M3U8(TS)
+M3U (MP3 URL or Moving Picture Experts Group Audio Layer 3 Uniform Resource Locator in full) is a computer file 
+format for a multimedia playlist. M3U was originally developed by Fraunhofer for use with their Winplay3 software, 
+but numerous media players and software applications now support the format. An M3U file is a plain text file that 
+specifies the locations of one or more media files. The file is saved with the "m3u" filename extension if the text is 
+encoded in the local system's default non-Unicode encoding (e.g., a Windows codepage), or with the "m3u8" extension if 
+the text is UTF-8 encoded. <sup>[1](https://en.wikipedia.org/wiki/M3U)</sup>
+
+M3U8 file itself does not contain video data, but a list of links which point multiple video slices. These slices are 
+saved in format TS (MPEG-2 Transport Stream). 
+
+
 ## HTML
 
 * `<figure>` vs `<img>`
@@ -19,7 +48,7 @@ tool for authoring functional tests without the need to learn a test scripting l
 It also provides a test domain-specific language (Selenese) to write tests in a number of popular programming 
 languages, including C#, Groovy, Java, Perl, PHP, Python, Ruby and Scala. The tests can then run against most 
 modern web browsers. Selenium deploys on Windows, Linux, and macOS platforms. It is open-source software, released 
-under the Apache 2.0 license: web developers can download and use it without charge.<sup>[1](https://de.wikipedia.org/wiki/Selenium)</sup>
+under the Apache 2.0 license: web developers can download and use it without charge. <sup>[2](https://de.wikipedia.org/wiki/Selenium)</sup>
 
 With Selenium, we can implement automatic interactions with webpages.
 
@@ -70,4 +99,14 @@ Package `from selenium.webdriver.common.keys import Keys`
 
 With `driver.find_elements_by ...`, we can get a list of satisfactory elements.
 
-## 
+### Configurations
+
+* Page Load Strategy
+> With the configuration of page load strategy, we can define whether the following command always wait for full load.
+
+``` 
+    from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+    caps = DesiredCapabilities().FIREFOX
+    caps["pageLoadStrategy"] = "eager"
+    browser = webdriver.Firefox(capabilities=caps)
+```
